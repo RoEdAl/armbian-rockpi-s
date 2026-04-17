@@ -1,0 +1,24 @@
+name: Build Armbian Image for Radxa ROCK Pi S board
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - uses: armbian/build@main
+        with:
+          armbian_token: ${{ secrets.GITHUB_TOKEN }}
+          armbian_board: rockpi-s
+          armbian_release: trixie
+          armbian_target: build
+          armbian_ui: minimal
+          armbian_runner_clean: "yes"
+          armbian_release_title: Rock Pi S
+          armbian_release_body: |
+            Armbian image for [Radxa Rock Pi S](https://radxa.com/products/rockpi/pis) board.
+            Build with [Armbian tools](https://github.com/armbian/build).
