@@ -1,7 +1,9 @@
 #!/bin/bash
 
-mkdir -p /usr/lib/systemd/journald.conf.d
-cat << 'EOF' > /usr/lib/systemd/journald.conf.d/storage.conf
+declare -r JOURNALD_CONF_DIR=/usr/lib/systemd/journald.conf.d
+mkdir -p $JOURNALD_CONF_DIR
+cat << 'EOF' > $JOURNALD_CONF_DIR/storage.conf
 [Journal]
 Storage=volatile
 EOF
+chmod 0644 $JOURNALD_CONF_DIR/storage.conf
